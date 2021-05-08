@@ -1,5 +1,5 @@
 # MOBILE MANIPULATOR
-![](../images/logo.jpg)
+![](../images/logo3.png)
 
 ## Prerequisites
 - gmapping: 2D Mapping using package
