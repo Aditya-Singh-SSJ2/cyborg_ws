@@ -1,0 +1,14 @@
+<launch>
+  <include file="$(find mobile_manip)/launch/amcl.launch" />
+
+  <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
+    <rosparam file="$(find mobile_manip)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find mobile_manip)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find mobile_manip)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find mobile_manip)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find mobile_manip)/config/trajectory_planner.yaml" command="load" />
+
+    <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
+    <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="1.0"/>
+  </node>
+</launch>

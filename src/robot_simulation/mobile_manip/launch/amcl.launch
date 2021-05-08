@@ -1,0 +1,14 @@
+<launch>
+    <arg name="world_name" default="$(find mobile_manip)/world/sample_arena.world"/>
+    <include file="$(find mobile_robot_description)/launch/spawn_mobile_robot_with_lidar.launch">
+        <arg name="world_name" value="$(arg world_name)"/>
+    </include>
+
+    <include file="$(find mobile_manip)/launch/rviz.launch"/>
+
+    <arg name="dir" default="$(find mobile_manip)/map/sample_map.yaml"/>
+    <node name="map_server" pkg="map_server" type="map_server" args="$(arg dir)"/>
+
+    <node name="amcl" type="amcl" pkg="amcl" output="screen"/>
+
+</launch>

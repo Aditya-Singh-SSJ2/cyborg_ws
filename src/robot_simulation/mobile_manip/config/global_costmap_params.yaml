@@ -1,0 +1,9 @@
+global_costmap:
+  global_frame: map
+  robot_base_frame: base_link
+  update_frequency: 5       # before: 5.0
+  publish_frequency: 5      # before 0.5
+  static_map: false
+  transform_tolerance: 0.5    # tune, delay in transform update
+  cost_scaling_factor: 2 #25.0 # tune, cost scaling factor
+  inflation_radius: 1 #0.55   # tune, distance at which the cost of an obstacle should be considered.

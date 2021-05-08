@@ -1,0 +1,1450 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <scene>
+      <ambient>0.25 0.3 0.5 1</ambient>
+      <grid>0</grid>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.5 -1</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <model name='room1'>
+      <static>1</static>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <link name='right_wall'>
+        <collision name='right_wall_collision'>
+          <pose frame=''>5 0 2.5 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.25 10 5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='right_wall_visual'>
+          <pose frame=''>5 0 2.5 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.25 10 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.3 0.3 1</ambient>
+            <diffuse>1 0.3 0.3 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='left_wall'>
+        <collision name='left_wall_collision'>
+          <pose frame=''>-5 0 2.5 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.25 10 5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='left_wall_visual'>
+          <pose frame=''>-5 0 2.5 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.25 10 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.3 0.3 1</ambient>
+            <diffuse>1 0.3 0.3 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='back_wall'>
+        <collision name='back_wall_collision'>
+          <pose frame=''>0 -5 2.5 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>10 0.25 5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='back_wall_visual'>
+          <pose frame=''>0 -5 2.5 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>10 0.25 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.3 0.3 1</ambient>
+            <diffuse>1 0.3 0.3 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='front_wall'>
+        <collision name='front_wall_left_collision'>
+          <pose frame=''>3 5 2.5 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.25 5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='front_wall_left_visual'>
+          <pose frame=''>3 5 2.5 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 0.25 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.3 0.3 1</ambient>
+            <diffuse>1 0.3 0.3 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+        <collision name='front_wall_right_collision'>
+          <pose frame=''>3 5 2.5 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.25 5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='front_wall_right_visual'>
+          <pose frame=''>-3 5 2.5 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 0.25 5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.3 0.3 1</ambient>
+            <diffuse>1 0.3 0.3 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+        <collision name='front_wall_down_collision'>
+          <pose frame=''>0 5 0.75 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2 0.25 1.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='front_wall_down_visual'>
+          <pose frame=''>0 5 0.75 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 0.25 1.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.3 0.3 1</ambient>
+            <diffuse>1 0.3 0.3 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+        <collision name='front_wall_up_collision'>
+          <pose frame=''>0 5 4.25 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>2 0.25 1.5</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='front_wall_up_visual'>
+          <pose frame=''>0 5 4.25 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>2 0.25 1.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.3 0.3 1</ambient>
+            <diffuse>1 0.3 0.3 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='cone'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>2.29079 2.78668 0 0 -0 0</pose>
+    </model>
+    <model name='cone_0'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>2.31063 -1.00246 0 0 -0 0</pose>
+    </model>
+    <model name='cone_1'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-1.51297 2.77933 0 0 -0 0</pose>
+    </model>
+    <model name='cone_2'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-1.47765 -1.023 0 0 -0 0</pose>
+    </model>
+    <model name='cone_3'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-4.25575 2.77874 0 0 -0 0</pose>
+    </model>
+    <model name='cone_4'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-4.26411 -0.956697 0 0 -0 0</pose>
+    </model>
+    <model name='cone_5'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>4.56893 2.69717 0 0 -0 0</pose>
+    </model>
+    <model name='cone_6'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>4.63683 -1.25499 0 0 -0 0</pose>
+    </model>
+    <model name='cone_7'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-4.283 3.97705 0 0 -0 0</pose>
+    </model>
+    <model name='cone_8'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-4.23408 -3.11822 0 0 -0 0</pose>
+    </model>
+    <model name='cone_9'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-1.48623 -3.25512 0 0 -0 0</pose>
+    </model>
+    <model name='cone_10'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>-1.46992 3.95322 0 0 -0 0</pose>
+    </model>
+    <model name='cone_11'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>2.26849 3.88861 0 0 -0 0</pose>
+    </model>
+    <model name='cone_12'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>2.44821 -3.43444 0 0 -0 0</pose>
+    </model>
+    <model name='cone_13'>
+      <static>1</static>
+      <link name='cone'>
+        <pose frame=''>0 0 0.01 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>5.2e-05 -1.4e-05 0.076727 0 -0 0</pose>
+          <mass>2.9929</mass>
+          <inertia>
+            <ixx>0.015934</ixx>
+            <ixy>3.3876e-08</ixy>
+            <ixz>1.2277e-05</ixz>
+            <iyy>0.015934</iyy>
+            <iyz>3.2514e-06</iyz>
+            <izz>0.0079448</izz>
+          </inertia>
+        </inertial>
+        <collision name='cone_collision'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='cone_visual'>
+          <pose frame=''>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://cone/meshes/cone.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>4.62118 -3.66626 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>242 569000000</sim_time>
+      <real_time>244 23677101</real_time>
+      <wall_time>1611385093 522771439</wall_time>
+      <iterations>242569</iterations>
+      <model name='cone'>
+        <pose frame=''>1.37554 1.89156 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>1.37554 1.89156 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_0'>
+        <pose frame=''>1.68538 -0.006951 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>1.68538 -0.006951 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_1'>
+        <pose frame=''>-0.905984 1.81675 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>-0.905984 1.81675 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_10'>
+        <pose frame=''>0.42777 3.13435 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>0.42777 3.13435 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_11'>
+        <pose frame=''>2.21792 3.1179 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>2.21792 3.1179 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_12'>
+        <pose frame=''>0.44542 -1.7852 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>0.44542 -1.7852 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_13'>
+        <pose frame=''>2.66002 -3.53717 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>2.66002 -3.53717 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_2'>
+        <pose frame=''>-0.924165 -0.059239 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>-0.924165 -0.059239 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_3'>
+        <pose frame=''>-3.40627 1.74182 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>-3.40627 1.74182 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_4'>
+        <pose frame=''>-3.3346 -0.009977 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>-3.3346 -0.009977 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_5'>
+        <pose frame=''>3.05565 1.05791 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>3.05565 1.05791 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_6'>
+        <pose frame=''>3.22738 -1.40427 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>3.22738 -1.40427 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_7'>
+        <pose frame=''>-2.18617 2.91134 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>-2.18617 2.91134 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_8'>
+        <pose frame=''>-3.18938 -1.70581 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>-3.18938 -1.70581 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cone_9'>
+        <pose frame=''>-0.908089 -3.21177 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='cone'>
+          <pose frame=''>-0.908089 -3.21177 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='room1'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='back_wall'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='front_wall'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='left_wall'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='right_wall'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-0.009529 -1.02772 16.1657 1.1e-05 1.5698 1.61621</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
